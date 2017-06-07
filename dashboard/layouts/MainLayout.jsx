@@ -6,12 +6,13 @@ import TopBar from '../components/TopBar';
 import Head from '../components/Head';
 import Sidebar from '../components/Sidebar';
 
-const MainLayout = function MainLayout() {
+const MainLayout = function MainLayout({children}) {
 
   return(
     <div className="h-100">
       <Head />
       <TopBar />
+      {children}
       <Sidebar />
     </div>
   )
