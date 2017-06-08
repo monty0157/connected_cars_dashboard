@@ -21,7 +21,9 @@ const Routes = ({browserHistory}) => (
       <Route path="/cars" component={CarsCardLayoutContainer}>
         <Route path=":_id" component={CarsContent}/>
       </Route>
+
       <Route path="/profile" />
+      <Route path="/settings" />
     </Route>
   </Router>
 );
