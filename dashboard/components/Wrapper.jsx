@@ -2,7 +2,7 @@ import React from 'react';
 
 const Wrapper = function ({ children }) {
   return (
-    <div className="mw8 center ph3">
+    <div className="flex justify-center items-center ph3 w-100">
       {children}
     </div>
   );

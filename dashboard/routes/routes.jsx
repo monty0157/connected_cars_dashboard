@@ -16,6 +16,7 @@ const requireAuth = (nextState, replace) => {
 const Routes = ({browserHistory}) => (
   <Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>
     <Route path="/" component={MainLayout}>
+      <IndexRedirect to="/cars" />
       <Route path="/cars" component={Cars} />
       <Route path="/profile" />
     </Route>

@@ -16263,3 +16263,15 @@ body {
 .removeAfter::after {
   display: none;
 }
+.height__10 {
+  height: 10vh;
+}
+.height__90 {
+  height: 90vh;
+}
+.width__15 {
+  width: 15vw !important;
+}
+.flexAuto {
+  flex: 1 1 auto !important;
+}

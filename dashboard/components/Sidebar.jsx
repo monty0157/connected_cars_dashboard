@@ -8,9 +8,9 @@ const MenuItem = Menu.Item;
 const Sidebar = function Sidebar() {
 
   return(
-    <Sider className="h-100">
+    <Sider className="h-100 bg-white width__15 flexAuto">
       <Menu
-        theme="dark"
+        theme="light"
         mode="vertical"
         onClick={(item) => browserHistory.push(`/${item.key}`)}
       >
