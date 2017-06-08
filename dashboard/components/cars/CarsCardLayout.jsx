@@ -11,7 +11,7 @@ const { SubMenu } = Menu;
 const MenuItem = Menu.Item;
 
 const CarsCardLayout = function CarsCardLayout({findCars, children}) {
-  console.log(findCars);
+
   return(
     <Wrapper>
       <Layout>
