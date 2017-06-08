@@ -6,9 +6,7 @@ import Wrapper from '../Wrapper';
 import CarsCollection from '../../api/Collections'
 import CarsSidebar from './CarsSidebar';
 
-const { Content, Sider } = Layout;
-const { SubMenu } = Menu;
-const MenuItem = Menu.Item;
+const { Content } = Layout;
 
 const CarsCardLayout = function CarsCardLayout({findCars, children, loading}) {
   if(loading) return null;

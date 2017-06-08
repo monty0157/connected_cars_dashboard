@@ -16,11 +16,14 @@ const CarsSidebar = function CarsSidebar({findCars, loading}) {
         defaultSelectedKeys={['1']}
         defaultOpenKeys={['sub1']}
         className="h-100"
-        onClick={(item) => browserHistory.push(`/cars/${item.key}`)}
+        onClick={(item) => browserHistory.push(item.key)}
       >
-      {findCars.map(cars =>
-        <MenuItem key={cars._id}>{cars.model}</MenuItem>
-      )}
+        <MenuItem key="/cars">Info</MenuItem>
+        <SubMenu title="Cars">
+          {findCars.map(cars =>
+            <MenuItem key={`/cars/${cars._id}`}>{cars.model}</MenuItem>
+          )}
+        </SubMenu>
       </Menu>
     </Sider>
   )
