@@ -5,6 +5,24 @@ import { browserHistory } from 'react-router';
 const { Sider } = Layout;
 const MenuItem = Menu.Item;
 
+const MenuItems =[
+  {
+    key: 'profile',
+    icon: 'user',
+    label: 'Profile',
+  },
+  {
+    key: 'cars',
+    icon: 'team',
+    label: 'Cars',
+  },
+  {
+    key: 'settings',
+    icon: 'setting',
+    label: 'Settings',
+  }
+]
+
 const Sidebar = function Sidebar() {
 
   return(
@@ -14,15 +32,12 @@ const Sidebar = function Sidebar() {
         mode="vertical"
         onClick={(item) => browserHistory.push(`/${item.key}`)}
       >
-        <MenuItem key="profile">
-          <Icon type="user" />
-          <span className="nav-text f5">Profile</span>
-        </MenuItem>
-
-        <MenuItem key="cars">
-          <Icon type="car" />
-          <span className="nav-text f5">Car</span>
-        </MenuItem>
+        {MenuItems.map(item =>
+          <MenuItem key={item.key}>
+            <Icon type={item.icon} />
+            <span className="nav-text f5">{item.label}</span>
+          </MenuItem>
+        )}
       </Menu>
     </Sider>
   )
