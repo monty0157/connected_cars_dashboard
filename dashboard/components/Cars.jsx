@@ -1,15 +1,17 @@
 import React from 'react';
 import { Layout, Card, Menu, Icon } from 'antd';
+import { createContainer } from 'meteor/react-meteor-data';
+
 import Wrapper from './Wrapper';
 import CarsCollection from '../api/Collections'
 
 const { Content, Sider } = Layout;
 const { SubMenu } = Menu;
+const MenuItem = Menu.Item;
 
-const Cars = function Cars() {
+const Cars = function Cars({findCars}) {
 
-  const cars = CarsCollection.findOne();
-  console.log(cars)
+    console.log(findCars)
   return(
     <Wrapper>
       <Layout>
@@ -21,10 +23,9 @@ const Cars = function Cars() {
               defaultOpenKeys={['sub1']}
               className="h-100"
             >
-              <Menu.Item key="1">option1</Menu.Item>
-              <Menu.Item key="2">option2</Menu.Item>
-              <Menu.Item key="3">option3</Menu.Item>
-              <Menu.Item key="4">option4</Menu.Item>
+            {findCars.map(cars =>
+              <MenuItem key={cars._id}>{cars.model}</MenuItem>
+            )}
             </Menu>
           </Sider>
           <Content style={{ padding: '0 24px', minHeight: 400 }}>
@@ -36,4 +37,14 @@ const Cars = function Cars() {
   )
 }
 
-export default Cars;
+const CarsContainer = createContainer(() => {
+  const subscribe = Meteor.subscribe('cars.all_cars');
+
+  const findCars = CarsCollection.find({}).fetch();
+
+  return {
+    findCars
+  };
+}, (Cars))
+
+export default CarsContainer;
