@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import {Meteor } from 'meteor/meteor'
+import { Meteor } from 'meteor/meteor'
 
 import TopBar from '../components/TopBar';
 import Head from '../components/Head';
@@ -12,8 +12,10 @@ const MainLayout = function MainLayout({children}) {
     <div className="h-100">
       <Head />
       <TopBar />
-      {children}
-      <Sidebar />
+      <div className="flex height__90">
+        <Sidebar />
+        {children}
+      </div>
     </div>
   )
 }

@@ -7,7 +7,7 @@ const MenuItem = Menu.Item;
 const TopBar = function TopBar() {
 
   return(
-    <Header className="darkBlue">
+    <Header className="darkBlue height__10">
       <Menu
         mode="horizontal"
         theme="dark"
