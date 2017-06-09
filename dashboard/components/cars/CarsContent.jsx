@@ -49,12 +49,12 @@ const CarsContent = function CarsContent({car, form = {}, loading, handleSubmit}
         <Button
           htmlType="submit"
           type="primary"
-          className="mr2"
+          className="mr2 mv2"
         >
           Change
         </Button>
         <Button
-          className="ml2"
+          className="ml2 mv2"
         >
           Delete Car
         </Button>
