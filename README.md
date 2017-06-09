@@ -6,6 +6,7 @@ Dashboard for Connected Cars
 - Install Meteor.js
 - Clone this repository
 - cd into dashboard folder
+- Run command: npm install
 - Run command: meteor
 - Go to localhost:3000
 
