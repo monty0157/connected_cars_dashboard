@@ -6,6 +6,12 @@ const CarsCollection = new Mongo.Collection('cars');
 CarsCollection.allow({
   update() {
     return true;
+  },
+  remove() {
+    return true;
+  },
+  insert() {
+    return true;
   }
 })
 
