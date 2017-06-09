@@ -1,51 +1,26 @@
 import React from 'react';
 import { Mongo } from 'meteor/mongo'
 import { createContainer } from 'meteor/react-meteor-data';
-import { Form, Input, Col, Row, Button } from 'antd';
+import { Form, Button } from 'antd';
 import { compose, withHandlers, withProps } from 'recompose';
+import { browserHistory } from 'react-router';
 
 import CarsCollection from '../../api/Collections'
-
-const FormItem = Form.Item;
+import CarForm from './CarForm';
 
 const CarsContent = function CarsContent({car, handleRemoveCar, form = {}, loading, handleSubmit}) {
   if(loading) return null;
-  const { getFieldDecorator, validateFields, resetFields } = form;
+  const { validateFields, resetFields } = form;
 
   return(
     <div>
-      <h1 >{car.model} - {car.age}</h1>
+      <h1 className="mt0">{car.model} - {car.age}</h1>
       <h4 className="mv2">Change your car's name or age here:</h4>
       <Form onSubmit={(e) => handleSubmit({e, validateFields, resetFields})}>
-        <Row
-          gutter={12}
-          justify="space-between"
-        >
-          <Col span={8}>
-            <FormItem
-              className="mb2"
-              label="Bilens navn"
-            >
-                {getFieldDecorator("car_name")(
-
-                  <Input size="default" />
-                )}
-            </FormItem>
-          </Col>
-
-          <Col span={8}>
-            <FormItem
-              label="Bilens alder"
-              className="mb2"
-            >
-              {getFieldDecorator("car_age")(
-
-                <Input size="default" />
-              )}
-            </FormItem>
-          </Col>
-        </Row>
-
+        <CarForm
+          {...this.props}
+          form={form}
+        />
         <Button
           htmlType="submit"
           type="primary"
@@ -85,7 +60,8 @@ const CarsContentForm = Form.create({})(
 
       handleRemoveCar({e}) {
         e.preventDefault();
-        CarsCollection.remove({"_id": id})
+        CarsCollection.remove({"_id": id});
+        browserHistory.push('/cars/info_page');
       }
     }))
   )(CarsContent)
@@ -94,13 +70,13 @@ const CarsContentForm = Form.create({})(
 
 const CarsContentContainer = createContainer(({params}) => {
   const { _id } = params;
-  ObjectId = new Mongo.ObjectID(_id);
+  //ObjectId = new Mongo.ObjectID(_id);
   const subscribe = Meteor.subscribe('cars.all_cars');
 
   return {
-    car: CarsCollection.findOne({_id: ObjectId}),
+    car: CarsCollection.findOne({_id}),
     loading: !subscribe.ready(),
-    id: ObjectId,
+    id: _id,
   }
 }, (CarsContentForm))
 

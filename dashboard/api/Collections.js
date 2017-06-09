@@ -9,6 +9,9 @@ CarsCollection.allow({
   },
   remove() {
     return true;
+  },
+  insert() {
+    return true;
   }
 })
 

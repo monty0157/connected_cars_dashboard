@@ -5,6 +5,7 @@ import { Router, Route, IndexRedirect } from 'react-router';
 import MainLayout from '../layouts/MainLayout';
 import CarsCardLayoutContainer from '../components/cars/CarsCardLayout';
 import CarsContent from '../components/cars/CarsContent';
+import InfoPageCompose from '../components/cars/InfoPage';
 
 const requireAuth = (nextState, replace) => {
   if (!Meteor.userId() && !Meteor.loggingIn()) {
@@ -19,7 +20,9 @@ const Routes = ({browserHistory}) => (
     <Route path="/" component={MainLayout}>
       <IndexRedirect to="/cars" />
       <Route path="/cars" component={CarsCardLayoutContainer}>
-        <Route path=":_id" component={CarsContent}/>
+        <IndexRedirect to="info_page" />
+        <Route path="info_page" component={InfoPageCompose} />
+        <Route path=":_id" component={CarsContent} />
       </Route>
 
       <Route path="/profile" />
