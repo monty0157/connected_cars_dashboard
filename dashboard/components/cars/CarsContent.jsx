@@ -14,14 +14,18 @@ const CarsContent = function CarsContent({car, form = {}, loading, handleSubmit}
 
   return(
     <div>
-      <h1>{car.model} - {car.age}</h1>
+      <h1 >{car.model} - {car.age}</h1>
+      <h4 className="mv2">Change your car's name or age here:</h4>
       <Form onSubmit={(e) => handleSubmit({e, validateFields, resetFields})}>
         <Row
           gutter={12}
           justify="space-between"
         >
           <Col span={8}>
-            <FormItem label="Bilens navn">
+            <FormItem
+              className="mb2"
+              label="Bilens navn"
+            >
                 {getFieldDecorator("car_name")(
 
                   <Input size="default" />
@@ -30,7 +34,10 @@ const CarsContent = function CarsContent({car, form = {}, loading, handleSubmit}
           </Col>
 
           <Col span={8}>
-            <FormItem label="Bilens navn">
+            <FormItem
+              label="Bilens alder"
+              className="mb2"
+            >
               {getFieldDecorator("car_age")(
 
                 <Input size="default" />
