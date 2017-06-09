@@ -8,7 +8,7 @@ import CarsCollection from '../../api/Collections'
 
 const FormItem = Form.Item;
 
-const CarsContent = function CarsContent({car, form = {}, loading, handleSubmit}) {
+const CarsContent = function CarsContent({car, handleRemoveCar, form = {}, loading, handleSubmit}) {
   if(loading) return null;
   const { getFieldDecorator, validateFields, resetFields } = form;
 
@@ -55,6 +55,7 @@ const CarsContent = function CarsContent({car, form = {}, loading, handleSubmit}
         </Button>
         <Button
           className="ml2 mv2"
+          onClick={(e) => handleRemoveCar({e})}
         >
           Delete Car
         </Button>
@@ -70,7 +71,7 @@ const CarsContentForm = Form.create({})(
         e.preventDefault();
         validateFields((err, values) => {
           if (!err) {
-            CarsCollection.update({"_id" : id}, {
+            CarsCollection.update({"_id": id}, {
               $set: {
                 model: values.car_name,
                 age: values.car_age,
@@ -80,6 +81,11 @@ const CarsContentForm = Form.create({})(
             resetFields();
           }
         });
+      },
+
+      handleRemoveCar({e}) {
+        e.preventDefault();
+        CarsCollection.remove({"_id": id})
       }
     }))
   )(CarsContent)
