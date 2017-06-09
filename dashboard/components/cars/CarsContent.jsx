@@ -45,12 +45,18 @@ const CarsContent = function CarsContent({car, form = {}, loading, handleSubmit}
             </FormItem>
           </Col>
         </Row>
+
         <Button
-          label="Submit"
           htmlType="submit"
           type="primary"
+          className="mr2"
         >
-          Submit
+          Change
+        </Button>
+        <Button
+          className="ml2"
+        >
+          Delete Car
         </Button>
       </Form>
     </div>
